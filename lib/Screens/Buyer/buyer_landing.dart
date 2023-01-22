@@ -27,15 +27,17 @@ class _BuyerLandingState extends State<BuyerLanding> {
           ),
           bottomNavigationBar: CurvedNavigationBar(
             animationDuration: const Duration(milliseconds: 300),
-            backgroundColor: ColorConstants.fadedWhiteColor,
+            backgroundColor: ColorConstants.newGreyBackgroundColor,
             onTap: (index) {
               buyerMainController.changeIndex(index);
             },
+            buttonBackgroundColor: Colors.black,
             index: buyerMainController.bottomNavIndex.value,
+            color: ColorConstants.primaryColor,
             items: const [
-              Icon(Icons.home_filled),
-              Icon(Icons.shopping_cart),
-              Icon(Icons.person)
+              Icon(Icons.home_filled, color: Colors.white,),
+              Icon(Icons.shopping_cart, color: Colors.white,),
+              Icon(Icons.person, color: Colors.white,)
             ],
           ),
         );

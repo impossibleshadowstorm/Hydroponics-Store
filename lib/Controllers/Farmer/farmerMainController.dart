@@ -6,12 +6,17 @@ import 'package:hydroponics_store/Screens/Farmer/Home/farmer_home_screen.dart';
 import 'package:hydroponics_store/Screens/Farmer/Orders/order_screen.dart';
 import 'package:hydroponics_store/Screens/Farmer/Profile/farmer_profile_screen.dart';
 
-import '../../Model/plantsModel.dart';
-
 class FarmerMainController extends GetxController {
   UserModeController userModeController = Get.find();
 
   var bottomNavIndex = 0.obs;
+
+  var editCropsActivated = false.obs;
+
+  TextEditingController updateCropName = TextEditingController();
+  TextEditingController updateCropCategory = TextEditingController();
+  TextEditingController updateCropPrice = TextEditingController();
+  TextEditingController updateCropExpiryDate = TextEditingController();
 
   List<Widget> bottomNavigationPages = [
     const FarmerHomeScreen(),
@@ -29,23 +34,5 @@ class FarmerMainController extends GetxController {
     return products;
   }
 
-  // getAllProducts() async {
-  //   var products =
-  //       await FirebaseFirestore.instance.collection("products").get();
-  //
-  //   var list = products.docs
-  //       .map((item) => PlantsModel(
-  //             cropId: item.id,
-  //             cropName: item.data()["cropName"],
-  //             cropCategory: item.data()["cropCategory"],
-  //             cropExpiryDate: item.data()["cropExpiryDate"],
-  //             cropImage: item.data()["cropImage"],
-  //             cropPrice: item.data()["cropPrice"],
-  //             cropType: item.data()["cropType"],
-  //             farmerId: item.data()["farmerId"],
-  //           ))
-  //       .toList();
-  //   // print(list[0].cropName);
-  //   return list;
-  // }
+
 }

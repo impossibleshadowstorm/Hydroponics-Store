@@ -67,7 +67,7 @@ class _AddNewCropState extends State<AddNewCrop> {
                                                       .profilePath
                                                       .value)) as ImageProvider
                                               : const AssetImage(
-                                                  "assets/images/family.png"),
+                                                  "assets/images/plant-one.png"),
                                         ),
                                       ),
                                     ),
@@ -83,6 +83,7 @@ class _AddNewCropState extends State<AddNewCrop> {
                                   ],
                                 ),
                                 TextFormField(
+                                  initialValue: "asd",
                                   controller: farmerAddCropController.cropName,
                                   validator: (value) {
                                     if (value!.isEmpty) {

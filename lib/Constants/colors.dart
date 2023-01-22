@@ -11,4 +11,5 @@ class ColorConstants {
   static var darkSkinColor = const Color(0xffb29e55);
   static var lightSkinColor = const Color(0xffd1d2ae);
   static var fadedWhiteColor = const Color(0xfff5f6f0);
+  static var newGreyBackgroundColor = const Color(0xffDFE1E6);
 }

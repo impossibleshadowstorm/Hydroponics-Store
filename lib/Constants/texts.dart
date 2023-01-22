@@ -1,7 +1,5 @@
-import 'package:flutter/material.dart';
-
 class TextConstants {
-//Onboarding texts
+  //Onboard texts
   static var titleOne = "Learn more about plants";
   static var descriptionOne =
       "Read how to care for plants in our rich plants guide.";

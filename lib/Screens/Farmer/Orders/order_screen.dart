@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:hydroponics_store/Constants/colors.dart';
 
 class OrderScreen extends StatefulWidget {
@@ -13,7 +12,7 @@ class _OrderScreenState extends State<OrderScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: ColorConstants.fadedWhiteColor,
+      backgroundColor: ColorConstants.newGreyBackgroundColor,
       body: SafeArea(
         child: SingleChildScrollView(
           child: Column(
@@ -34,7 +33,7 @@ class _OrderScreenState extends State<OrderScreen> {
 
   Widget addedCropsList() {
     return ListView.builder(
-      itemCount: 50,
+      itemCount: 3,
       itemBuilder: (context, index) {
         return InkWell(
           onTap: () {},
@@ -42,7 +41,10 @@ class _OrderScreenState extends State<OrderScreen> {
             padding: const EdgeInsets.only(right: 10),
             height: 120,
             margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
-            color: Colors.white,
+            decoration: const BoxDecoration(
+              borderRadius: BorderRadius.all(Radius.circular(7)),
+              color: Colors.white,
+            ),
             width: MediaQuery.of(context).size.width,
             child: Row(
               children: [

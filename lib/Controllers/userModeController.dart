@@ -3,12 +3,14 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
+import 'package:hydroponics_store/Screens/Auth/Mode/userModeSelection.dart';
 import 'package:hydroponics_store/Screens/Buyer/buyer_landing.dart';
 import 'package:hydroponics_store/Screens/Buyer/buyer_registration.dart';
 import 'package:hydroponics_store/Screens/Farmer/farmer_landing.dart';
 import 'package:hydroponics_store/Screens/Farmer/farmer_registration.dart';
 import 'package:hydroponics_store/Screens/Transporter/transporter_landing.dart';
 import 'package:hydroponics_store/Screens/Transporter/transporter_registration.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import '../Screens/Auth/Mode/buyer_mode.dart';
 import '../Screens/Auth/Mode/farmer_mode.dart';
 import '../Screens/Auth/Mode/transporter_mode.dart';
@@ -141,10 +143,10 @@ class UserModeController extends GetxController {
       getRightData()["error"].value = "Login Successful, Please Wait";
 
       var db = await FirebaseFirestore.instance
-          .collection("users")
-          .doc(pagesDescriptionList[bottomNavIndex.value]["collectionName"])
-          .collection(getRightData()["phone"].text)
-          .get();
+            .collection("users")
+            .doc(pagesDescriptionList[bottomNavIndex.value]["collectionName"])
+            .collection(getRightData()["phone"].text)
+            .get();
 
       getRightData()["indicator"].value = false;
 
@@ -153,6 +155,10 @@ class UserModeController extends GetxController {
         Get.offAll(() => verifiedRegistrationPages[bottomNavIndex.value]);
       }
       else{
+        SharedPreferences prefs = await SharedPreferences.getInstance();
+        await prefs.setString("userId", auth.currentUser!.uid);
+        await prefs.setInt("bottomNavIndex", bottomNavIndex.value);
+        await prefs.setString("phoneNumber", getRightData()["phone"].text);
         Get.offAll(() => verifiedLandingPages[bottomNavIndex.value]);
       }
     } catch (e) {
@@ -164,6 +170,8 @@ class UserModeController extends GetxController {
 
   Future<void> signOut() async {
     await auth.signOut();
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.clear();
     buyerOtpField.text = "";
     farmerOtpField.text = "";
     transporterOtpField.text = "";
@@ -186,6 +194,8 @@ class UserModeController extends GetxController {
     transporterProgressIndicator.value = false;
     transporterError.value = "";
     transporterCountryCode.value = "";
+
+    Get.offAll(() => const UserModeSelection());
   }
 
   changePage(index) {

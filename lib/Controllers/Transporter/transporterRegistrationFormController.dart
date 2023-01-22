@@ -158,6 +158,21 @@ class TransporterRegistrationFormController extends GetxController {
       "state": transporterState.text,
       "profileImage": profileUploadedUrl,
     });
+    await FirebaseFirestore.instance
+        .collection("transporters")
+        .doc(userModeController.getRightData()["phone"].text)
+        .set({
+      "fullName": transporterFullName.text,
+      "mobileNumber": userModeController.getRightData()["phone"].text,
+      "alternateMobileNumber": transporterAlternateMobileNumber.text,
+      "aadhaarNumber": transporterAadhaarNumber.text,
+      "gstNumber": transporterGSTNumber.text,
+      "tanNumber": transporterTANNumber.text,
+      "address": transporterAddress.text,
+      "city": transporterCity.text,
+      "state": transporterState.text,
+      "profileImage": profileUploadedUrl,
+    });
   }
 
   Widget buildProgress() {

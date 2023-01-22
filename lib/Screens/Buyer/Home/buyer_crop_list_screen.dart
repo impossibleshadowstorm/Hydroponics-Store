@@ -31,7 +31,7 @@ class _BuyerCropListScreenState extends State<BuyerCropListScreen> {
   Widget build(BuildContext context) {
     return Obx(() {
       return Scaffold(
-        backgroundColor: ColorConstants.fadedWhiteColor,
+        backgroundColor: ColorConstants.newGreyBackgroundColor,
         body: SafeArea(
           child: Column(
             children: [

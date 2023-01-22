@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:hydroponics_store/Controllers/userModeController.dart';
 import 'package:hydroponics_store/Screens/Auth/Mode/userModeSelection.dart';
 import 'package:hydroponics_store/Screens/Buyer/buyer_landing.dart';
 import 'package:hydroponics_store/Screens/Buyer/buyer_registration.dart';
@@ -21,6 +22,7 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
+  UserModeController userModeController = Get.find();
   Future checkFirstSeen() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     bool seen = (prefs.getBool('seen') ?? false);
@@ -29,11 +31,20 @@ class _SplashScreenState extends State<SplashScreen> {
       // Get.offAll(() => const Authentication());
       // Get.offAll(() => const SimpleLogin());
       // Get.offAll(() => const BuyerRegistration());
-      Get.offAll(() => const UserModeSelection());
+      // Get.offAll(() => const UserModeSelection());
       // Get.offAll(() => const BuyerLanding());
       // Get.offAll(() => const TransporterLanding());
       // Get.offAll(() => const PinUserLocation());
       // Get.to(() => const LandingScreen());
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+      final token = prefs.getString("userId");
+      if (token != null) {
+        userModeController.bottomNavIndex.value = prefs.getInt("bottomNavIndex")!;
+        userModeController.getRightData()["phone"].text = prefs.getString("phoneNumber")!;
+        Get.offAll(() => userModeController.verifiedLandingPages[userModeController.bottomNavIndex.value]);;
+      } else {
+        Get.offAll(() => const UserModeSelection());
+      }
     } else {
       await prefs.setBool('seen', true);
       Get.offAll(() => const OnBoardingScreen());

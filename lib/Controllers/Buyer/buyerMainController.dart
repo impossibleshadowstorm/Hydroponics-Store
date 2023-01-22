@@ -1,7 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
-import 'package:hydroponics_store/Model/FarmerModel.dart';
 import 'package:hydroponics_store/Model/plantsModel.dart';
 
 import '../../Model/CartProductListModel.dart';
@@ -12,6 +11,59 @@ import '../../Screens/Buyer/Profile/buyer_profile_screen.dart';
 class BuyerMainController extends GetxController {
   var bottomNavIndex = 0.obs;
   var cropType = 0.obs;
+  var transporterSelected = false.obs;
+  var transporterCost = 0.0.obs;
+  List<dynamic> cropTypeData = [];
+  var a = 0.obs;
+  Rx<List<dynamic>> foundCropData = Rx<List<dynamic>>([]);
+  var dataL = 0.obs;
+
+
+  Future<void> getData() async {
+    foundCropData.value.clear();
+    Future.delayed(Duration.zero, (){dataL.value = 0;});
+    // dataL.value = 0;
+    // Get docs from collection reference
+    QuerySnapshot querySnapshot =
+        await FirebaseFirestore.instance.collection('products').get();
+
+    // Get data from docs and convert map to List
+    final List<dynamic> allData =
+        querySnapshot.docs.map((doc) => doc.data()).toList();
+
+    List<String> cropCategoryList = [];
+
+    for (var element in allData) {
+      cropCategoryList.add(element["cropCategory"]);
+    }
+    cropCategoryList = cropCategoryList.toSet().toList();
+
+    for (var j = 0; j < cropCategoryList.length; j++) {
+      for (int i = 0; i < allData.length; i++) {
+        if (allData[i]["cropCategory"] == cropCategoryList[j]) {
+          foundCropData.value.add(allData[i]);
+        }
+        if (foundCropData.value.length - 1 == j) {
+          break;
+        }
+      }
+    }
+    cropTypeData = foundCropData.value;
+    dataL.value = foundCropData.value.length;
+  }
+
+  getFilteredCropData(String name) {
+    if (name.isEmpty) {
+      foundCropData.value = cropTypeData;
+    } else {
+      foundCropData.value = cropTypeData
+          .where((element) => element["cropCategory"]
+              .toString()
+              .toLowerCase()
+              .contains(name.toLowerCase()))
+          .toList();
+    }
+  }
 
   TextEditingController quantityController = TextEditingController();
 

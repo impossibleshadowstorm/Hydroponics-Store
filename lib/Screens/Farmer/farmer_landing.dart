@@ -28,15 +28,17 @@ class _FarmerLandingState extends State<FarmerLanding> {
           ),
           bottomNavigationBar: CurvedNavigationBar(
             animationDuration: const Duration(milliseconds: 300),
-            backgroundColor: ColorConstants.fadedWhiteColor,
-            onTap: (index){
+            backgroundColor: ColorConstants.newGreyBackgroundColor,
+            onTap: (index) {
               farmerMainController.changeIndex(index);
             },
+            buttonBackgroundColor: Colors.black,
             index: farmerMainController.bottomNavIndex.value,
+            color: ColorConstants.primaryColor,
             items: const [
-              Icon(Icons.home_filled),
-              Icon(Icons.shopping_cart),
-              Icon(Icons.person)
+              Icon(Icons.home_filled, color: Colors.white,),
+              Icon(Icons.shopping_cart, color: Colors.white,),
+              Icon(Icons.person, color: Colors.white,)
             ],
           ),
         );
