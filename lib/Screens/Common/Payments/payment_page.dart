@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:hydroponics_store/Constants/colors.dart';
 
@@ -16,7 +17,7 @@ class _PaymentPageState extends State<PaymentPage> {
 
     return Scaffold(
       backgroundColor: ColorConstants.primaryColor,
-      body: Container(
+      body: SizedBox(
         height: size.height,
         width: size.width,
         child: Stack(
@@ -58,10 +59,10 @@ class _PaymentPageState extends State<PaymentPage> {
                                 width: 100,
                                 decoration: const BoxDecoration(
                                   shape: BoxShape.circle,
-                                  // image: DecorationImage(
-                                  //   image: AssetImage("assets/image/payment.png"),
-                                  // ),
-                                  color: Colors.red,
+                                  image: DecorationImage(
+                                    image:
+                                        AssetImage("assets/images/payment.png"),
+                                  ),
                                 ),
                               ),
                               Column(
@@ -74,39 +75,51 @@ class _PaymentPageState extends State<PaymentPage> {
                                     ),
                                   ),
                                   const SizedBox(height: 20),
-                                  Container(
-                                    margin: const EdgeInsets.symmetric(
-                                        horizontal: 25),
-                                    height: 50,
-                                    decoration: BoxDecoration(
-                                      border: Border.all(color: Colors.grey),
-                                      borderRadius: const BorderRadius.all(
-                                          Radius.circular(10)),
-                                      color: ColorConstants.fadedWhiteColor,
-                                    ),
-                                    padding: const EdgeInsets.symmetric(
-                                        horizontal: 20),
-                                    child: Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        const Text(
-                                          "+91 8937936970",
-                                          style: TextStyle(
-                                            color: Colors.black87,
-                                            fontSize: 20,
-                                            fontWeight: FontWeight.w500,
+                                  InkWell(
+                                    onTap: () {
+                                      Clipboard.setData(ClipboardData(
+                                              text: '+919639588268'))
+                                          .then((_) {
+                                        ScaffoldMessenger.of(context)
+                                            .showSnackBar(SnackBar(
+                                                content: Text(
+                                                    'GPay Number copied to your clipboard!')));
+                                      });
+                                    },
+                                    child: Container(
+                                      margin: const EdgeInsets.symmetric(
+                                          horizontal: 25),
+                                      height: 50,
+                                      decoration: BoxDecoration(
+                                        border: Border.all(color: Colors.grey),
+                                        borderRadius: const BorderRadius.all(
+                                            Radius.circular(10)),
+                                        color: ColorConstants.fadedWhiteColor,
+                                      ),
+                                      padding: const EdgeInsets.symmetric(
+                                          horizontal: 20),
+                                      child: Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          const Text(
+                                            "+91 9639588268",
+                                            style: TextStyle(
+                                              color: Colors.black87,
+                                              fontSize: 20,
+                                              fontWeight: FontWeight.w500,
+                                            ),
                                           ),
-                                        ),
-                                        Container(
-                                          height: 45,
-                                          child: const Icon(
-                                            Icons.copy,
-                                            color: Colors.black87,
-                                            size: 20,
+                                          Container(
+                                            height: 45,
+                                            child: const Icon(
+                                              Icons.copy,
+                                              color: Colors.black87,
+                                              size: 20,
+                                            ),
                                           ),
-                                        ),
-                                      ],
+                                        ],
+                                      ),
                                     ),
                                   ),
                                 ],
@@ -118,11 +131,18 @@ class _PaymentPageState extends State<PaymentPage> {
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              Text("Bank Details"),
+                              const Text(
+                                "Bank Details",
+                                style: TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
                               Container(
                                 decoration: BoxDecoration(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(10)),
+                                  borderRadius: const BorderRadius.all(
+                                      Radius.circular(10)),
                                   border: Border.all(
                                     color: Colors.black,
                                   ),
@@ -169,7 +189,16 @@ class _PaymentPageState extends State<PaymentPage> {
                                       ),
                                     ),
                                     InkWell(
-                                      onTap: () {},
+                                      onTap: () {
+                                        Clipboard.setData(const ClipboardData(
+                                                text: 'Axis Bank'))
+                                            .then((_) {
+                                          ScaffoldMessenger.of(context)
+                                              .showSnackBar(const SnackBar(
+                                                  content: Text(
+                                                      'Bank Name copied to your clipboard!')));
+                                        });
+                                      },
                                       child: Row(
                                         mainAxisAlignment:
                                             MainAxisAlignment.spaceBetween,
@@ -199,7 +228,16 @@ class _PaymentPageState extends State<PaymentPage> {
                                       ),
                                     ),
                                     InkWell(
-                                      onTap: () {},
+                                      onTap: () {
+                                        Clipboard.setData(const ClipboardData(
+                                                text: 'Rural Farms'))
+                                            .then((_) {
+                                          ScaffoldMessenger.of(context)
+                                              .showSnackBar(const SnackBar(
+                                                  content: Text(
+                                                      'Account Holder Name copied to your clipboard!')));
+                                        });
+                                      },
                                       child: Row(
                                         mainAxisAlignment:
                                             MainAxisAlignment.spaceBetween,
@@ -229,13 +267,22 @@ class _PaymentPageState extends State<PaymentPage> {
                                       ),
                                     ),
                                     InkWell(
-                                      onTap: () {},
+                                      onTap: () {
+                                        Clipboard.setData(const ClipboardData(
+                                                text: '921020049194854'))
+                                            .then((_) {
+                                          ScaffoldMessenger.of(context)
+                                              .showSnackBar(const SnackBar(
+                                                  content: Text(
+                                                      'Account Number copied to your clipboard!')));
+                                        });
+                                      },
                                       child: Row(
                                         mainAxisAlignment:
                                             MainAxisAlignment.spaceBetween,
                                         children: const [
                                           Text(
-                                            "Rural Farms",
+                                            "921020049194854",
                                             style: TextStyle(
                                               color: Colors.black87,
                                               fontSize: 16,
@@ -259,13 +306,22 @@ class _PaymentPageState extends State<PaymentPage> {
                                       ),
                                     ),
                                     InkWell(
-                                      onTap: () {},
+                                      onTap: () {
+                                        Clipboard.setData(const ClipboardData(
+                                                text: 'UTIB0003948'))
+                                            .then((_) {
+                                          ScaffoldMessenger.of(context)
+                                              .showSnackBar(const SnackBar(
+                                                  content: Text(
+                                                      'IFSC Code copied to your clipboard!')));
+                                        });
+                                      },
                                       child: Row(
                                         mainAxisAlignment:
                                             MainAxisAlignment.spaceBetween,
                                         children: const [
                                           Text(
-                                            "PUBNB0107400",
+                                            "UTIB0003948",
                                             style: TextStyle(
                                               color: Colors.black87,
                                               fontSize: 16,
@@ -290,6 +346,32 @@ class _PaymentPageState extends State<PaymentPage> {
                     ),
                   )
                 ],
+              ),
+            ),
+            // Back Button
+            Positioned(
+              top: size.height * 0.15,
+              left: 20,
+              child: InkWell(
+                onTap: (){
+                  Get.back();
+                },
+                child: Container(
+                  height: 50,
+                  width: 50,
+                  decoration: BoxDecoration(
+                    color: ColorConstants.primaryColor,
+                    borderRadius: const BorderRadius.only(
+                      topRight: Radius.circular(10),
+                      bottomRight: Radius.circular(10),
+                    ),
+                  ),
+                  child: const Icon(
+                    Icons.arrow_back_sharp,
+                    color: Colors.white,
+                    size: 23,
+                  ),
+                ),
               ),
             ),
             //left bubble
