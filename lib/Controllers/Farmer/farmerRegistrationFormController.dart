@@ -20,6 +20,11 @@ class FarmerRegistrationFormController extends GetxController {
   TextEditingController farmerAddress = TextEditingController();
   TextEditingController farmerCity = TextEditingController();
   TextEditingController farmerState = TextEditingController();
+  TextEditingController farmerGPayNumber = TextEditingController();
+  TextEditingController farmerBankName = TextEditingController();
+  TextEditingController farmerAccountHolder = TextEditingController();
+  TextEditingController farmerAccountNumber = TextEditingController();
+  TextEditingController farmerIFSC = TextEditingController();
 
   var isProfilePicPathSet = false.obs;
   var profilePath = "".obs;
@@ -131,8 +136,8 @@ class FarmerRegistrationFormController extends GetxController {
     await FirebaseFirestore.instance
         .collection("users")
         .doc(userModeController
-                .pagesDescriptionList[userModeController.bottomNavIndex.value]
-            ["collectionName"])
+        .pagesDescriptionList[userModeController.bottomNavIndex.value]
+    ["collectionName"])
         .collection(userModeController.getRightData()["phone"].text)
         .doc("details")
         .set({
@@ -141,11 +146,15 @@ class FarmerRegistrationFormController extends GetxController {
       "alternateMobileNumber": farmerAlternateMobileNumber.text,
       "aadhaarNumber": farmerAadhaarNumber.text,
       "gstNumber": farmerGSTNumber.text,
-      "tanNumber": farmerTANNumber.text,
+      "panNumber": farmerTANNumber.text,
       "address": farmerAddress.text,
       "city": farmerCity.text,
       "state": farmerState.text,
       "profileImage": profileUploadedUrl,
+      "farmerGPayNumber": farmerGPayNumber.text,
+      "farmerBankName": farmerBankName.text,
+      "farmerAccountHolder": farmerAccountHolder.text,
+      "farmerIFSC": farmerIFSC.text,
     });
   }
 }

@@ -180,9 +180,9 @@ class _FarmerRegistrationState extends State<FarmerRegistration> {
                       TextFormField(
                         validator: (value) {
                           if (value!.isEmpty ||
-                              !RegExp(r"^[a-zA-Z]{4}[0-9]{5}[a-zA-Z]{1}?$")
+                              !RegExp(r"^[A-Za-z]{5}[0-9]{4}[A-Za-z]{1}$")
                                   .hasMatch(value)) {
-                            return "Please enter Valid TAN Number!";
+                            return "Please enter Valid PAN Number!";
                           }
                           return null;
                         },
@@ -197,7 +197,7 @@ class _FarmerRegistrationState extends State<FarmerRegistration> {
                         keyboardType: TextInputType.text,
                         decoration: const InputDecoration(
                           label: Text(
-                            "TAN Number",
+                            "PAN Number",
                             style: TextStyle(letterSpacing: 1),
                           ),
                           hintText: "AAXX999XXA",
@@ -230,6 +230,19 @@ class _FarmerRegistrationState extends State<FarmerRegistration> {
                             style: TextStyle(letterSpacing: 1),
                           ),
                           hintText: "11AAXXX11XXA1A5",
+                        ),
+                      ),
+
+                      //Address
+                      Container(
+                        padding: const EdgeInsets.symmetric(vertical: 20),
+                        child: const Text(
+                          "Address",
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 20,
+                          ),
                         ),
                       ),
                       Container(
@@ -283,7 +296,6 @@ class _FarmerRegistrationState extends State<FarmerRegistration> {
                           ],
                         ),
                       ),
-
                       TextFormField(
                         enabled: false,
                         validator: (value) {
@@ -328,6 +340,136 @@ class _FarmerRegistrationState extends State<FarmerRegistration> {
                           ),
                           hintText: "Uttarakhand",
                         ),
+                      ),
+
+                      // Bank Details
+                      Container(
+                        padding: const EdgeInsets.symmetric(vertical: 20),
+                        child: const Text(
+                          "Bank Details",
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 20,
+                          ),
+                        ),
+                      ),
+                      TextFormField(
+                        validator: (value) {
+                          if (value!.isEmpty ||
+                              !RegExp(r"^[0-9]{10}$").hasMatch(value)) {
+                            return "Please enter Valid Google Pay Number!";
+                          }
+                          return null;
+                        },
+                        controller: farmerRegistrationFormController
+                            .farmerGPayNumber,
+                        maxLines: 1,
+                        maxLength: 10,
+                        maxLengthEnforcement: MaxLengthEnforcement.enforced,
+                        keyboardType: TextInputType.number,
+                        style: const TextStyle(
+                          letterSpacing: 3,
+                        ),
+                        decoration: const InputDecoration(
+                          label: Text(
+                            "Google Pay Number",
+                            style: TextStyle(letterSpacing: 1),
+                          ),
+                          hintText: "989898XXXX",
+                        ),
+                      ),
+                      TextFormField(
+                        validator: (value) {
+                          if (value!.isEmpty) {
+                            return "Please enter Valid Bank Name!";
+                          }
+                          return null;
+                        },
+                        controller:
+                        farmerRegistrationFormController.farmerBankName,
+                        maxLines: 1,
+                        // keyboardType: TextInputType.text,
+                        decoration: const InputDecoration(
+                          label: Text("Bank Name"),
+                          hintText: "Axis Bank",
+                        ),
+                      ),
+                      TextFormField(
+                        validator: (value) {
+                          if (value!.isEmpty) {
+                            return "Please enter Valid Account Holder Name!";
+                          }
+                          return null;
+                        },
+                        controller:
+                        farmerRegistrationFormController.farmerAccountHolder,
+                        maxLines: 1,
+                        // keyboardType: TextInputType.text,
+                        decoration: const InputDecoration(
+                          label: Text("Account Holder Name"),
+                          hintText: "John Amanda",
+                        ),
+                      ),
+                      TextFormField(
+                        validator: (value) {
+                          if (value!.isEmpty ||
+                              !RegExp(r"^[0-9]{9,18}$")
+                                  .hasMatch(value)) {
+                            return "Please enter Valid Account Number!";
+                          }
+                          return null;
+                        },
+                        controller:
+                        farmerRegistrationFormController.farmerAccountNumber,
+                        maxLines: 1,
+                        // keyboardType: TextInputType.text,
+                        decoration: const InputDecoration(
+                          label: Text("Account Number"),
+                          hintText: "",
+                        ),
+                      ),
+                      TextFormField(
+                        validator: (value) {
+                          if (value!.isEmpty || farmerRegistrationFormController.farmerAccountNumber.text != value) {
+                            return "Account Number Mismatch!";
+                          }
+                          return null;
+                        },
+                        maxLines: 1,
+                        // keyboardType: TextInputType.text,
+                        decoration: const InputDecoration(
+                          label: Text("Re-enter Account Number"),
+                          hintText: "Re-enter Account Number",
+                        ),
+                      ),
+                      TextFormField(
+                        validator: (value) {
+                          if (value!.isEmpty ||
+                              !RegExp(r"^[A-Za-z]{4}0[A-Za-z0-9]{6}$")
+                                  .hasMatch(value)) {
+                            return "Please enter Valid IFSC Code Number!";
+                          }
+                          return null;
+                        },
+                        style: const TextStyle(
+                          letterSpacing: 3,
+                        ),
+                        controller:
+                        farmerRegistrationFormController.farmerIFSC,
+                        maxLines: 1,
+                        textInputAction: TextInputAction.next,
+                        textCapitalization: TextCapitalization.characters,
+                        keyboardType: TextInputType.text,
+                        decoration: const InputDecoration(
+                          label: Text(
+                            "IFSC Code",
+                            style: TextStyle(letterSpacing: 1),
+                          ),
+                          hintText: "AAXX999XXA",
+                        ),
+                        // maxLength: 10,
+                        maxLengthEnforcement: MaxLengthEnforcement.enforced,
                       ),
                     ],
                   ),
