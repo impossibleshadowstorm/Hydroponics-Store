@@ -4,7 +4,6 @@ import 'package:get/get.dart';
 import 'package:hydroponics_store/Controllers/Buyer/buyerMainController.dart';
 import 'package:hydroponics_store/Controllers/userModeController.dart';
 import 'package:hydroponics_store/Screens/Buyer/Home/buyer_crop_description.dart';
-import 'package:hydroponics_store/Screens/Buyer/Orders/buyer_cart_screen.dart';
 import 'package:hydroponics_store/Screens/Buyer/buyer_landing.dart';
 
 import '../../../Constants/colors.dart';
@@ -222,7 +221,7 @@ class _BuyerCropListScreenState extends State<BuyerCropListScreen> {
                 InkWell(
                   onTap: () {
                     buyerMainController.bottomNavIndex.value = 1;
-                    Get.offAll(()=> const BuyerLanding());
+                    Get.offAll(() => const BuyerLanding());
                   },
                   child: Stack(
                     children: [
