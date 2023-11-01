@@ -2,10 +2,6 @@ import 'dart:async';
 import 'dart:convert';
 import 'package:geocoding/geocoding.dart';
 import 'package:http/http.dart' as http;
-
-import 'package:geocoding/geocoding.dart';
-
-// import 'package:location/location.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:hydroponics_store/Controllers/Buyer/buyerRegistrationFormController.dart';
 import 'package:hydroponics_store/Controllers/Farmer/farmerRegistrationFormController.dart';
@@ -14,11 +10,11 @@ import 'package:hydroponics_store/Controllers/userModeController.dart';
 import 'package:location/location.dart' as loc;
 import 'package:get/get.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:geocoder2/geocoder2.dart';
 import 'package:uuid/uuid.dart';
 
 class UserLocationController extends GetxController {
   UserModeController userModeController = Get.find();
+
   // FarmerRegistrationFormController farmerRegistrationFormController =
   //     Get.find();
   // BuyerRegistrationFormController buyerRegistrationFormController = Get.find();
@@ -75,19 +71,22 @@ class UserLocationController extends GetxController {
           destLocation!.latitude, destLocation!.longitude);
 
       if (userModeController.bottomNavIndex.value == 0) {
-        BuyerRegistrationFormController buyerRegistrationFormController = Get.find();
+        BuyerRegistrationFormController buyerRegistrationFormController =
+            Get.find();
         buyerRegistrationFormController.setAddress(
             "${placemarks[0].name}, ${placemarks[0].subLocality}, ${placemarks[0].subAdministrativeArea}, ${placemarks[0].locality}, ${placemarks[0].postalCode}, ${placemarks[0].country}",
             "${placemarks[0].locality}",
             "${indianStateCode[placemarks[0].administrativeArea]}");
       } else if (userModeController.bottomNavIndex.value == 1) {
-        FarmerRegistrationFormController farmerRegistrationFormController = Get.find();
+        FarmerRegistrationFormController farmerRegistrationFormController =
+            Get.find();
         farmerRegistrationFormController.setAddress(
             "${placemarks[0].name}, ${placemarks[0].subLocality}, ${placemarks[0].subAdministrativeArea}, ${placemarks[0].locality}, ${placemarks[0].postalCode}, ${placemarks[0].country}",
             "${placemarks[0].locality}",
             "${indianStateCode[placemarks[0].administrativeArea]}");
       } else {
-        TransporterRegistrationFormController transporterRegistrationFormController = Get.find();
+        TransporterRegistrationFormController
+            transporterRegistrationFormController = Get.find();
         transporterRegistrationFormController.setAddress(
             "${placemarks[0].name}, ${placemarks[0].subLocality}, ${placemarks[0].subAdministrativeArea}, ${placemarks[0].locality}, ${placemarks[0].postalCode}, ${placemarks[0].country}",
             "${placemarks[0].locality}",

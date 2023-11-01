@@ -20,7 +20,7 @@ class _BuyerHomeScreenState extends State<BuyerHomeScreen> {
 
   @override
   void initState() {
-    // TODO: implement initState
+    super.initState();
     buyerMainController.getData();
   }
 
@@ -46,31 +46,27 @@ class _BuyerHomeScreenState extends State<BuyerHomeScreen> {
     );
   }
 
-  Widget cropCategory(){
+  Widget cropCategory() {
     return Obx(() {
-      if(buyerMainController.dataL.value == 0){
+      if (buyerMainController.dataL.value == 0) {
         return const Center(
           child: CircularProgressIndicator(),
         );
-      }else {
+      } else {
         return ListView.builder(
           itemCount: buyerMainController.foundCropData.value.length,
           itemBuilder: (context, index) {
             return Container(
               padding: const EdgeInsets.only(right: 10),
               height: 150,
-              margin:
-              const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+              margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
               decoration: const BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.all(
                   Radius.circular(12),
                 ),
               ),
-              width: MediaQuery
-                  .of(context)
-                  .size
-                  .width,
+              width: MediaQuery.of(context).size.width,
               child: Row(
                 children: [
                   Container(
@@ -90,12 +86,11 @@ class _BuyerHomeScreenState extends State<BuyerHomeScreen> {
                       children: [
                         const SizedBox(height: 15),
                         Container(
-                          margin:
-                          const EdgeInsets.symmetric(horizontal: 20),
+                          margin: const EdgeInsets.symmetric(horizontal: 20),
                           alignment: Alignment.center,
                           child: Text(
                             buyerMainController.foundCropData.value[index]
-                            ["cropCategory"],
+                                ["cropCategory"],
                             overflow: TextOverflow.ellipsis,
                             style: const TextStyle(
                               color: Colors.black,
@@ -107,12 +102,11 @@ class _BuyerHomeScreenState extends State<BuyerHomeScreen> {
                         const SizedBox(height: 15),
                         InkWell(
                           onTap: () {
-                            Get.to(() =>
-                                BuyerCropListScreen(
+                            Get.to(() => BuyerCropListScreen(
                                   cropType: "hydroponic",
                                   cropCategory: buyerMainController
-                                      .foundCropData.value[index]
-                                  ["cropCategory"],
+                                      .foundCropData
+                                      .value[index]["cropCategory"],
                                 ));
                           },
                           child: Container(
@@ -120,15 +114,13 @@ class _BuyerHomeScreenState extends State<BuyerHomeScreen> {
                             width: double.infinity,
                             decoration: const BoxDecoration(
                               borderRadius:
-                              BorderRadius.all(Radius.circular(5)),
+                                  BorderRadius.all(Radius.circular(5)),
                             ),
-                            margin:
-                            const EdgeInsets.symmetric(horizontal: 10),
+                            margin: const EdgeInsets.symmetric(horizontal: 10),
                             padding: const EdgeInsets.symmetric(
                                 horizontal: 20, vertical: 0),
                             child: Row(
-                              mainAxisAlignment:
-                              MainAxisAlignment.spaceBetween,
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 const Text(
                                   "Hydroponics",
@@ -140,12 +132,12 @@ class _BuyerHomeScreenState extends State<BuyerHomeScreen> {
                                 Container(
                                   width: 70,
                                   height: 25,
-                                  padding: const EdgeInsets.symmetric(
-                                      vertical: 0),
+                                  padding:
+                                      const EdgeInsets.symmetric(vertical: 0),
                                   decoration: const BoxDecoration(
                                     color: Colors.black,
-                                    borderRadius: BorderRadius.all(
-                                        Radius.circular(5)),
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(5)),
                                   ),
                                   child: const Icon(
                                     Icons.arrow_forward_sharp,
@@ -159,12 +151,11 @@ class _BuyerHomeScreenState extends State<BuyerHomeScreen> {
                         const SizedBox(height: 5),
                         InkWell(
                           onTap: () {
-                            Get.to(() =>
-                                BuyerCropListScreen(
+                            Get.to(() => BuyerCropListScreen(
                                   cropType: "organic",
                                   cropCategory: buyerMainController
-                                      .foundCropData.value[index]
-                                  ["cropCategory"],
+                                      .foundCropData
+                                      .value[index]["cropCategory"],
                                 ));
                           },
                           child: Container(
@@ -172,16 +163,14 @@ class _BuyerHomeScreenState extends State<BuyerHomeScreen> {
                             width: double.infinity,
                             decoration: const BoxDecoration(
                               borderRadius:
-                              BorderRadius.all(Radius.circular(5)),
+                                  BorderRadius.all(Radius.circular(5)),
                               // color: ColorConstants.primaryColor,
                             ),
-                            margin:
-                            const EdgeInsets.symmetric(horizontal: 20),
+                            margin: const EdgeInsets.symmetric(horizontal: 20),
                             padding: const EdgeInsets.symmetric(
                                 horizontal: 10, vertical: 0),
                             child: Row(
-                              mainAxisAlignment:
-                              MainAxisAlignment.spaceBetween,
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 const Text(
                                   "Organic",
@@ -193,12 +182,12 @@ class _BuyerHomeScreenState extends State<BuyerHomeScreen> {
                                 Container(
                                   width: 70,
                                   height: 25,
-                                  padding: const EdgeInsets.symmetric(
-                                      vertical: 0),
+                                  padding:
+                                      const EdgeInsets.symmetric(vertical: 0),
                                   decoration: const BoxDecoration(
                                     color: Colors.black,
-                                    borderRadius: BorderRadius.all(
-                                        Radius.circular(5)),
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(5)),
                                   ),
                                   child: const Icon(
                                     Icons.arrow_forward_sharp,
@@ -212,12 +201,11 @@ class _BuyerHomeScreenState extends State<BuyerHomeScreen> {
                         const SizedBox(height: 5),
                         InkWell(
                           onTap: () {
-                            Get.to(() =>
-                                BuyerCropListScreen(
+                            Get.to(() => BuyerCropListScreen(
                                   cropType: "inorganic",
                                   cropCategory: buyerMainController
-                                      .foundCropData.value[index]
-                                  ["cropCategory"],
+                                      .foundCropData
+                                      .value[index]["cropCategory"],
                                 ));
                           },
                           child: Container(
@@ -225,16 +213,14 @@ class _BuyerHomeScreenState extends State<BuyerHomeScreen> {
                             width: double.infinity,
                             decoration: const BoxDecoration(
                               borderRadius:
-                              BorderRadius.all(Radius.circular(5)),
+                                  BorderRadius.all(Radius.circular(5)),
                               // color: ColorConstants.primaryColor,
                             ),
-                            margin:
-                            const EdgeInsets.symmetric(horizontal: 20),
+                            margin: const EdgeInsets.symmetric(horizontal: 20),
                             padding: const EdgeInsets.symmetric(
                                 horizontal: 10, vertical: 0),
                             child: Row(
-                              mainAxisAlignment:
-                              MainAxisAlignment.spaceBetween,
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 const Text(
                                   "Inorganic",
@@ -246,12 +232,12 @@ class _BuyerHomeScreenState extends State<BuyerHomeScreen> {
                                 Container(
                                   width: 70,
                                   height: 25,
-                                  padding: const EdgeInsets.symmetric(
-                                      vertical: 0),
+                                  padding:
+                                      const EdgeInsets.symmetric(vertical: 0),
                                   decoration: const BoxDecoration(
                                     color: Colors.black,
-                                    borderRadius: BorderRadius.all(
-                                        Radius.circular(5)),
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(5)),
                                   ),
                                   child: const Icon(
                                     Icons.arrow_forward_sharp,

@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:hydroponics_store/Constants/colors.dart';
 import 'package:get/get.dart';
@@ -33,7 +31,7 @@ class _LocationEntryState extends State<LocationEntry> {
     }
 
     userLocationController.addressController.addListener(() {
-      if(userLocationController.addressController.text.length > 3) {
+      if (userLocationController.addressController.text.length > 3) {
         userLocationController.addressTypingOnChange();
       }
     });
@@ -71,9 +69,7 @@ class _LocationEntryState extends State<LocationEntry> {
               ),
               const SizedBox(height: 10),
               TextFormField(
-                validator: (value){
-
-                },
+                validator: (value) {},
                 controller: userLocationController.addressController,
                 textAlignVertical: TextAlignVertical.center,
                 style: const TextStyle(

@@ -3,13 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hydroponics_store/Controllers/userModeController.dart';
 import 'package:hydroponics_store/Screens/Auth/Mode/userModeSelection.dart';
-import 'package:hydroponics_store/Screens/Buyer/buyer_landing.dart';
-import 'package:hydroponics_store/Screens/Buyer/buyer_registration.dart';
-import 'package:hydroponics_store/Screens/Common/location_entry.dart';
-import 'package:hydroponics_store/Screens/Common/pinUserLocation.dart';
-import 'package:hydroponics_store/Screens/Farmer/farmer_landing.dart';
-import 'package:hydroponics_store/Screens/Farmer/farmer_registration.dart';
-import 'package:hydroponics_store/Screens/Transporter/transporter_landing.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'onboarding_screen.dart';

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:hydroponics_store/Screens/Common/pinUserLocation.dart';
-import 'package:hydroponics_store/Screens/Farmer/farmer_landing.dart';
 import 'dart:io';
 import '../../Constants/colors.dart';
 import '../../Controllers/userModeController.dart';
